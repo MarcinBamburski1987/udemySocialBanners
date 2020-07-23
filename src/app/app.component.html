@@ -21,7 +21,7 @@
   <!-- Component Banner -->
   <div class="banner">
     <div class="banner-text" [ngStyle]="getBannerStyles()">
-      <span contenteditable="true">
+      <span contenteditable="true" [style.fontSize.px]="fontSize">
         Zacznij programować w Angularze
       </span>
     </div>
@@ -32,25 +32,25 @@
   <div class="settings">
     <label>Kolor 1</label>
     <div class="colors">
-      <span class="badge"></span>
+      <span class="badge" *ngFor="let color of colors" [ngClass]="color" (click)="color1 = color"></span>
     </div>
 
-    <input type="range" min="0" max="100" />
+    <input type="range" min="0" max="100" [(ngModel)]="percentColor1"/>
 
     <label>Kolor 2</label>
     <div class="colors">
-      <span class="badge"></span>
+      <span class="badge" *ngFor="let color of colors.reverse()" [ngClass]="color" (click)="color2 = color"></span>
     </div>
-    <input type="range" min="0" max="100" />
+    <input type="range" min="0" max="100" [(ngModel)]="percentColor2"/>
 
     <label>Szerokość</label>
-    <input type="range" min="0" max="1000" step="50" />
+    <input type="range" min="0" max="1000" step="50" [(ngModel)]="width"/>
 
     <label>Wysokość</label>
-    <input type="range" min="0" max="1000" step="50" />
+    <input type="range" min="0" max="1000" step="50" [(ngModel)]="height"/>
 
     <label>Rozmiar czcionki</label>
-    <input type="range" min="12" max="72" />
+    <input type="range" min="12" max="72" [(ngModel)]="fontSize"/>
   </div>
   <!-- Component Settings End -->
 </div>
